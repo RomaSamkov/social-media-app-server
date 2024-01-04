@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { log } from "console";
+import { register } from "module";
 
 /* ------- Configurations ------- */
 
@@ -36,6 +37,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+/* ------- Routes With Files ------- */
+
+app.post("auth/register", upload.single("picture"), register);
 
 /* ------- Mongoose Setup ------- */
 
